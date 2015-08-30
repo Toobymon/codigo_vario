@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+		<title>Reglamento - Conquista Chile</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<script type="text/javascript">$(function(){
+
+	//También puedes probar a incluir una petición al equivalente ajax.php
+
+	$.getJSON( "http://conquistachile.herokuapp.com/runners.json", function(data){
+	//Creamos la tabla
+	$("#content").html("<table id=table class="table table-striped"></table>");
+	//Incluimos la fila con el nombre de las columnas
+	$("#table").append("<th>Nombre</th><th>Segundo nombre</th><th>Apellido P</th><th>Apellido M</th><th>Ciudad</th><th>Club</th><th>Categoria</th>");
+	//Incluimos los datos para cada una de las filas
+	$.each(data, function(key, val){
+	//var temp=new array();
+	var temp=val.nombre.split(" ");
+
+	var cat="";
+	if(val.category_id == 1){var cat="Kids 7-9 años 3.5Km";}
+	if(val.category_id == 2){var cat="Kids 10-11 años 3.5Km";}
+	if(val.category_id == 3){var cat="Kids 12-13 años 9Km";}
+	if(val.category_id == 4){var cat="Kids 14-15 (Varones) años 9Km";}
+	if(val.category_id == 5){var cat="Kids 14-15 (Damas)años 9Km";}
+	if(val.category_id == 6){var cat="Kids 16-17 (Varones)años 9Km";}
+	if(val.category_id == 7){var cat="Kids 16-17 (Damas)años 9Km";}
+	if(val.category_id == 8){var cat="Damas 18-29 años (Amateur) 43Km";}
+	if(val.category_id == 9){var cat="Damas 30 y más años 43Km";}
+	if(val.category_id == 10){var cat="Varones 18 y más años (Elite) 43 Km";}
+	if(val.category_id == 11){var cat="Varones 18 y 29 años (Amateur) 43 Km";}
+	if(val.category_id == 12){var cat="Varones 30-39 años 43Km";}
+	if(val.category_id == 13){var cat="Varones 40-49 años 43Km";}
+	if(val.category_id == 14){var cat="Varones 50-59 años 43Km";}
+	if(val.category_id == 15){var cat="Varones 60 y más años 43Km";}
+
+	if(temp.length == 4){
+	$("#table").append("<tr><td>"+temp[0]+"</td><td>"+temp[1]+"</td><td>"+temp[2]+"</td><td>"+temp[3]+"</td><td>"+val.ciudad+"</td><td>"+val.club+"</td><td>"+cat+"</td></tr>");
+	}
+	if(temp.length == 3){
+	$("#table").append("<tr><td>"+temp[0]+"</td><td></td><td>"+temp[1]+"</td><td>"+temp[2]+"</td><td>"+val.ciudad+"</td><td>"+val.club+"</td><td>"+cat+"</td</tr>");
+	}
+	if(temp.length == 2){
+	$("#table").append("<tr><td>"+temp[0]+"</td><td></td><td>"+temp[1]+"</td><td></td><td>"+val.ciudad+"</td><td>"+val.club+"</td><td>"+cat+"</td</tr>");
+	}
+	});
+	});
+	});
+	</script>
+
+</head>
+<body>
+	<header>
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="http://www.conquistachile.cl">Conquista Chile</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://www.conquistachile.cl/">Inicio</a></li>
+						<li><a href="http://www.conquistachile.cl/reglamento.html">Reglamento</a></li>
+						<li><a href="http://conquistachile.herokuapp.com/">Incripciones</a></li>
+						<!--<li><a href="http://www.conquistachile.cl/lista.html/">Listado de Corredores</a></li>-->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div id="content"></div>
+
+
+
+
+</body>
+</html>
