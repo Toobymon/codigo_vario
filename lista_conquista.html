@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 		<title>Reglamento - Conquista Chile</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<script type="text/javascript">$(function(){
 
@@ -14,7 +14,7 @@
 
 	$.getJSON( "http://conquistachile.herokuapp.com/runners.json", function(data){
 	//Creamos la tabla
-	$("#content").html("<table id=table class="table table-striped"></table>");
+	$("#content").html("<table id=table class=table table-striped></table>");
 	//Incluimos la fila con el nombre de las columnas
 	$("#table").append("<th>Nombre</th><th>Segundo nombre</th><th>Apellido P</th><th>Apellido M</th><th>Ciudad</th><th>Club</th><th>Categoria</th>");
 	//Incluimos los datos para cada una de las filas
